@@ -8,17 +8,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.Assert;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -34,23 +29,11 @@ class FlowBuilderTest {
     @BeforeEach
     void setUp() {
 
-        jsonInput = "{\n" +
-                "  \"id\": 12345,\n" +
-                "  \"name\": \"TestFlow\",\n" +
-                "  \"pages\": [\n" +
-                "    {\n" +
-                "      \"pageTitle\": \"WelcomePage\",\n" +
-                "      \"pageInstance\": \"1_WP\",\n" +
-                "      \"visibilityName\": \"True\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"pageTitle\": \"PageTwo\",\n" +
-                "      \"pageInstance\": \"1_PageTwo\",\n" +
-                "      \"visibilityName\": \"Over25\"\n" +
-                "    }\n" +
-                "  ]\n" +
-                "}";
-
+        try {
+            jsonInput = FileLoader.getJsonString("flows/test_flow.json");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         test = new FlowBuilder(beanService);
     }
 
@@ -92,24 +75,5 @@ class FlowBuilderTest {
         Assert.isTrue(!visibiltyCheck.isVisible(requiredData), "Page Two is false");
     }
 
-    @Test
-    public void whenResourceAsStream_thenReadSuccessful() {
-        String test = null;
-        try {
-            test = FileLoader.getJsonString("ft_flow.json");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        System.out.println(test);
-//        InputStream resource = new ClassPathResource(
-//                "ft_flow.json").getInputStream();
-//        try ( BufferedReader reader = new BufferedReader(
-//                new InputStreamReader(resource)) ) {
-//            String employees = reader.lines()
-//                    .collect(Collectors.joining("\n"));
-//
-//            assertEquals("Joe Employee,Jan Employee,James T. Employee", employees);
-//        }
-    }
 
 }
