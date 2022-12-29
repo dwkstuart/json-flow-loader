@@ -38,6 +38,7 @@ public class ProductCatalogue {
 
         prodDefinitions.add(FileLoader.getJsonString("ft_product.json"));
         prodDefinitions.add(FileLoader.getJsonString("pt_product.json"));
+//        prodDefinitions.add(FileLoader.getJsonString("test_product.json"));
 
         for (String jsonString : prodDefinitions) {
             Product product = productBuilder.buildProduct(jsonString);

@@ -10,7 +10,7 @@ public class ProductDefinition implements Serializable {
 
 
     private final static long serialVersionUID = 3764252012278698923L;
-    private List<FlowDefinition> flows;
+    private List<String> flows;
     private String productName;
     private String id;
 

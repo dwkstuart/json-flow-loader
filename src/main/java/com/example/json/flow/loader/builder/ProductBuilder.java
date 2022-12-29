@@ -1,6 +1,7 @@
 package com.example.json.flow.loader.builder;
 
 import com.example.json.flow.loader.BeanService;
+import com.example.json.flow.loader.FileLoader;
 import com.example.json.flow.loader.dtos.FlowDefinition;
 import com.example.json.flow.loader.dtos.PageDefintion;
 import com.example.json.flow.loader.dtos.ProductDefinition;
@@ -9,6 +10,7 @@ import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -24,17 +26,29 @@ public class ProductBuilder {
         this.beanService = beanService;
     }
 
-    public Product buildProduct(String jsonInput) {
+    public Product buildProduct(String jsonInput) throws IOException {
 
         ProductDefinition components;
 
         Gson gson = new Gson();
         components = gson.fromJson(jsonInput, ProductDefinition.class);
+        List<FlowDefinition> flowDefinitionList = fetchFlowDefintions(components.getFlows());
         Product product = new Product();
         product.setProductId(components.getId());
-        product.setPageFlowList(pageFlowList(components.getFlows()));
+        product.setPageFlowList(pageFlowList(flowDefinitionList));
         product.setProductName(components.getProductName().replaceAll("\\s+",""));
         return product;
+    }
+
+    private List<FlowDefinition> fetchFlowDefintions(List<String> flows) throws IOException {
+        List<FlowDefinition> flowDefinitionList = new ArrayList<>();
+        Gson gson = new Gson();
+        for(String flow :  flows){
+            String flowJson = FileLoader.getJsonString("flows/" + flow + ".json");
+            FlowDefinition flowDefinition = gson.fromJson(flowJson, FlowDefinition.class);
+            flowDefinitionList.add(flowDefinition);
+        }
+        return flowDefinitionList;
     }
 
     private List<PageFlow> pageFlowList(List<FlowDefinition> flowDefinition) {

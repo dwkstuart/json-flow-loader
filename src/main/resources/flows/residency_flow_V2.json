@@ -1,0 +1,22 @@
+{
+  "id": 23456,
+  "name": "Residency",
+  "pages": [
+    {
+      "pageTitle": "UK National",
+      "pageInstance": "1_UK_National",
+      "visibilityName": "True"
+    },
+    {
+      "pageTitle": "PageTwo",
+      "pageInstance": "1_PageTwo",
+      "visibilityName": "Over25"
+    },
+    {
+      "pageTitle": "PageTwo",
+      "pageInstance": "2_PageTwo",
+      "visibilityName": "True"
+    }
+
+  ]
+}

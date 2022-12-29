@@ -24,7 +24,7 @@ class ProductDefinitionTest {
     @BeforeEach
     void setUp() {
         try {
-            jsonInput = FileLoader.getJsonString("ft_product.json");
+            jsonInput = FileLoader.getJsonString("test_product.json");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -33,10 +33,15 @@ class ProductDefinitionTest {
     @Test
     void getFlowDefinition() {
         Gson gson = new Gson();
-        gson.fromJson(jsonInput, ProductDefinition.class);
+        ProductDefinition test = gson.fromJson(jsonInput, ProductDefinition.class);
 
         ProductBuilder productBuilder = new ProductBuilder(beanService);
-        Product product = productBuilder.buildProduct(jsonInput);
+        Product product = null;
+        try {
+            product = productBuilder.buildProduct(jsonInput);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         Map beans = beanService.getBeansByClass(Product.class);
         assertNotNull(product);
     }

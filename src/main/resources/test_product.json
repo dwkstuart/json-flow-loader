@@ -1,0 +1,8 @@
+{
+  "productName": "TestProduct",
+  "id": 12345,
+  "flows": [
+    "test_flow",
+    "test_flow"
+  ]
+}
