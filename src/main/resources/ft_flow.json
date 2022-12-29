@@ -1,0 +1,36 @@
+{
+  "productName": "Full Time",
+  "id": 12345,
+  "flows": [
+    {
+      "name": "Welcome",
+      "pages": [
+        {
+          "pageTitle": "WelcomePage",
+          "pageInstance": "1_WP",
+          "visibilityName": "True"
+        },
+        {
+          "pageTitle": "PageTwo",
+          "pageInstance": "1_PageTwo",
+          "visibilityName": "Over25"
+        }
+      ]
+    },
+    {
+      "name": "Residency",
+      "pages": [
+        {
+          "pageTitle": "UK National",
+          "pageInstance": "1_UK_National",
+          "visibilityName": "True"
+        },
+        {
+          "pageTitle": "PageTwo",
+          "pageInstance": "1_PageTwo",
+          "visibilityName": "Over25"
+        }
+      ]
+    }
+  ]
+}
