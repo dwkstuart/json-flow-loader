@@ -6,14 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@Component(value = "True")
-public class DefaultTrue implements Visibilty {
+@Component(value = "Equality")
+public class Equality implements Visibilty, DynamicVisibility {
 
     private List<String> requiredFields = new ArrayList<>();
 
+    private String comparsionValue;
+
+    private String fieldToCompare;
+
     @Override
     public Boolean isVisible(Map<String, String> requiredData) throws Exception {
-        return Boolean.TRUE;
+        return comparsionValue.equals(requiredData.get(fieldToCompare));
     }
 
     @Override
@@ -26,4 +30,13 @@ public class DefaultTrue implements Visibilty {
         this.requiredFields = requiredFieldNames;
     }
 
+    @Override
+    public void setComparsionValue(String comparsionValue) {
+        this.comparsionValue = comparsionValue;
+    }
+
+    @Override
+    public void setFieldToCompare(String fieldToCompare) {
+        this.fieldToCompare = fieldToCompare;
+    }
 }

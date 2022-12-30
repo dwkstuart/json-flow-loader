@@ -1,6 +1,6 @@
 package com.example.json.flow.loader;
 
-import com.example.json.flow.loader.model.Visibilty;
+import com.example.json.flow.loader.conditions.Visibilty;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -10,7 +10,24 @@
     {
       "pageTitle": "PageTwo",
       "pageInstance": "1_PageTwo",
-      "visibilityName": "Over25"
+      "visibilityName": "Over25",
+      "requiredFieldNames" : ["age"]
+    },
+    {
+      "pageTitle": "PageTwo",
+      "pageInstance": "1_PageTwo",
+      "visibilityName": "Equality",
+      "comparsionValue": "Yes",
+      "fieldToCompare": "UK_National",
+      "requiredFieldNames" : ["UK_National"]
+    },
+    {
+      "pageTitle": "PageTwo",
+      "pageInstance": "1_PageTwo",
+      "visibilityName": "GreaterThanInt",
+      "comparsionValue": "25",
+      "fieldToCompare": "age",
+      "requiredFieldNames" : ["age"]
     }
   ]
 }

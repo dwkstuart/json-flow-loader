@@ -2,8 +2,8 @@ package com.example.json.flow.loader.builder;
 
 import com.example.json.flow.loader.BeanService;
 import com.example.json.flow.loader.FileLoader;
+import com.example.json.flow.loader.conditions.Visibilty;
 import com.example.json.flow.loader.model.PageFlow;
-import com.example.json.flow.loader.model.Visibilty;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,5 +75,37 @@ class FlowBuilderTest {
         Assert.isTrue(!visibiltyCheck.isVisible(requiredData), "Page Two is false");
     }
 
+    @Test
+    void equalityBuildTest() throws Exception {
+        Map<String, String> dummyData = new HashMap<>();
+        dummyData.put("UK_National", "Yes");
+        Map<String, String> requiredData = new HashMap<>();
+        PageFlow pageFlow = test.buildPageFlow(jsonInput);
+        Visibilty visibiltyCheck = pageFlow.getPageWrapperList().get(2).getVisibilty();
+        List<String> requiredFields = visibiltyCheck.getDataFieldNames();
+        for (String fieldName : requiredFields) {
+            requiredData.put(fieldName, dummyData.get(fieldName));
+        }
+
+        Assert.isTrue(visibiltyCheck.isVisible(requiredData), "Page Two is true");
+    }
+
+    @Test
+    void under25notVisibleDynamic() throws Exception {
+        Map<String, String> dummyData = new HashMap<>();
+        dummyData.put("age", "20");
+        dummyData.put("course", "Maths");
+        dummyData.put("credits", "15");
+        dummyData.put("university", "University of Leeds");
+        Map<String, String> requiredData = new HashMap<>();
+        PageFlow pageFlow = test.buildPageFlow(jsonInput);
+        Visibilty visibiltyCheck = pageFlow.getPageWrapperList().get(3).getVisibilty();
+        List<String> requiredFields = visibiltyCheck.getDataFieldNames();
+        for (String fieldName : requiredFields) {
+            requiredData.put(fieldName, dummyData.get(fieldName));
+        }
+
+        Assert.isTrue(!visibiltyCheck.isVisible(requiredData), "Page Two is false");
+    }
 
 }

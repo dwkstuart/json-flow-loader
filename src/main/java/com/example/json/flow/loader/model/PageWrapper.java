@@ -1,5 +1,6 @@
 package com.example.json.flow.loader.model;
 
+import com.example.json.flow.loader.conditions.Visibilty;
 import lombok.Data;
 
 @Data

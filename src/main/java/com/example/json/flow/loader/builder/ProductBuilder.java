@@ -2,6 +2,7 @@ package com.example.json.flow.loader.builder;
 
 import com.example.json.flow.loader.BeanService;
 import com.example.json.flow.loader.FileLoader;
+import com.example.json.flow.loader.conditions.Visibilty;
 import com.example.json.flow.loader.dtos.FlowDefinition;
 import com.example.json.flow.loader.dtos.PageDefintion;
 import com.example.json.flow.loader.dtos.ProductDefinition;

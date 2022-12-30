@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class PageDefintion implements Serializable {
 
@@ -17,6 +18,40 @@ public class PageDefintion implements Serializable {
     @SerializedName("visibilityName")
     @Expose
     private String visibilityName;
+
+    public String getComparsionValue() {
+        return comparsionValue;
+    }
+
+    public void setComparsionValue(String comparsionValue) {
+        this.comparsionValue = comparsionValue;
+    }
+
+    public String getFieldToCompare() {
+        return fieldToCompare;
+    }
+
+    public void setFieldToCompare(String fieldToCompare) {
+        this.fieldToCompare = fieldToCompare;
+    }
+
+    public List<String> getRequiredFieldNames() {
+        return requiredFieldNames;
+    }
+
+    public void setRequiredFieldNames(List<String> requiredFieldNames) {
+        this.requiredFieldNames = requiredFieldNames;
+    }
+
+    @SerializedName("comparsionValue")
+    @Expose
+    private String comparsionValue;
+    @SerializedName("fieldToCompare")
+    @Expose
+    private String fieldToCompare;
+    @SerializedName("requiredFieldNames")
+    @Expose
+    private List<String> requiredFieldNames;
 
     public String getPageTitle() {
         return pageTitle;

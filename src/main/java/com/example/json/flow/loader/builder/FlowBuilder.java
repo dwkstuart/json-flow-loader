@@ -1,12 +1,15 @@
 package com.example.json.flow.loader.builder;
 
 import com.example.json.flow.loader.BeanService;
+import com.example.json.flow.loader.conditions.DefaultTrue;
+import com.example.json.flow.loader.conditions.DynamicVisibility;
+import com.example.json.flow.loader.conditions.Equality;
 import com.example.json.flow.loader.dtos.FlowDefinition;
 import com.example.json.flow.loader.dtos.PageDefintion;
 import com.example.json.flow.loader.model.Page;
 import com.example.json.flow.loader.model.PageFlow;
 import com.example.json.flow.loader.model.PageWrapper;
-import com.example.json.flow.loader.model.Visibilty;
+import com.example.json.flow.loader.conditions.Visibilty;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -42,13 +45,27 @@ public class FlowBuilder {
             PageWrapper pageWrapper = new PageWrapper();
             pageWrapper.setPage(getPageFromString(pageDefintion.getPageTitle()));
             Visibilty visibilty = getVisibityFromString(pageDefintion.getVisibilityName());
-            visibilty.setRequiredFieldNames(new ArrayList<>(Arrays.asList("age")));
+            if(pageDefintion.getRequiredFieldNames() != null){
+                visibilty.setRequiredFieldNames(pageDefintion.getRequiredFieldNames());
+            }
+            addDynamicFields(pageDefintion, visibilty);
             pageWrapper.setVisibilty(visibilty);
             pageWrapperList.add(pageWrapper);
         }
-        ;
+
 
         return pageWrapperList;
+    }
+
+    private void addDynamicFields(PageDefintion pageDefintion, Visibilty visibilty){
+
+        if(pageDefintion.getComparsionValue() != null && pageDefintion.getFieldToCompare() != null){
+            DynamicVisibility dynamicVisibility = (DynamicVisibility) visibilty;
+            dynamicVisibility.setFieldToCompare(pageDefintion.getFieldToCompare());
+            dynamicVisibility.setComparsionValue(pageDefintion.getComparsionValue());
+            visibilty = (Visibilty) dynamicVisibility;
+        }
+
     }
 
     private Visibilty getVisibityFromString(String visibilityName) {

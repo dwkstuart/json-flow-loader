@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.io.IOException;
 import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
@@ -32,9 +33,6 @@ class ProductDefinitionTest {
 
     @Test
     void getFlowDefinition() {
-        Gson gson = new Gson();
-        ProductDefinition test = gson.fromJson(jsonInput, ProductDefinition.class);
-
         ProductBuilder productBuilder = new ProductBuilder(beanService);
         Product product = null;
         try {
@@ -43,6 +41,7 @@ class ProductDefinitionTest {
             throw new RuntimeException(e);
         }
         Map beans = beanService.getBeansByClass(Product.class);
+        assertEquals(1, beans.size());
         assertNotNull(product);
     }
 }

@@ -1,6 +1,5 @@
 package com.example.json.flow.loader.conditions;
 
-import com.example.json.flow.loader.model.Visibilty;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
