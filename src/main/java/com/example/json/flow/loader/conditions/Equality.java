@@ -11,13 +11,13 @@ public class Equality implements Visibilty, DynamicVisibility {
 
     private List<String> requiredFields = new ArrayList<>();
 
-    private String comparsionValue;
+    private String comparisonValue;
 
     private String fieldToCompare;
 
     @Override
     public Boolean isVisible(Map<String, String> requiredData) throws Exception {
-        return comparsionValue.equals(requiredData.get(fieldToCompare));
+        return comparisonValue.equals(requiredData.get(fieldToCompare));
     }
 
     @Override
@@ -31,8 +31,8 @@ public class Equality implements Visibilty, DynamicVisibility {
     }
 
     @Override
-    public void setComparsionValue(String comparsionValue) {
-        this.comparsionValue = comparsionValue;
+    public void setComparisonValue(String comparisonValue) {
+        this.comparisonValue = comparisonValue;
     }
 
     @Override

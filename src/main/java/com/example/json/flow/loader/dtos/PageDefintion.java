@@ -19,12 +19,12 @@ public class PageDefintion implements Serializable {
     @Expose
     private String visibilityName;
 
-    public String getComparsionValue() {
-        return comparsionValue;
+    public String getComparisonValue() {
+        return comparisonValue;
     }
 
-    public void setComparsionValue(String comparsionValue) {
-        this.comparsionValue = comparsionValue;
+    public void setComparisonValue(String comparisonValue) {
+        this.comparisonValue = comparisonValue;
     }
 
     public String getFieldToCompare() {
@@ -43,9 +43,9 @@ public class PageDefintion implements Serializable {
         this.requiredFieldNames = requiredFieldNames;
     }
 
-    @SerializedName("comparsionValue")
+    @SerializedName("comparisonValue")
     @Expose
-    private String comparsionValue;
+    private String comparisonValue;
     @SerializedName("fieldToCompare")
     @Expose
     private String fieldToCompare;

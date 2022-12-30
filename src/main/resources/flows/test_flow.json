@@ -17,7 +17,7 @@
       "pageTitle": "PageTwo",
       "pageInstance": "1_PageTwo",
       "visibilityName": "Equality",
-      "comparsionValue": "Yes",
+      "comparisonValue": "Yes",
       "fieldToCompare": "UK_National",
       "requiredFieldNames" : ["UK_National"]
     },
@@ -25,7 +25,7 @@
       "pageTitle": "PageTwo",
       "pageInstance": "1_PageTwo",
       "visibilityName": "GreaterThanInt",
-      "comparsionValue": "25",
+      "comparisonValue": "25",
       "fieldToCompare": "age",
       "requiredFieldNames" : ["age"]
     }

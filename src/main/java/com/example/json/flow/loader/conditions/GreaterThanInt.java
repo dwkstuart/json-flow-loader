@@ -11,13 +11,13 @@ public class GreaterThanInt implements Visibilty, DynamicVisibility {
 
     private List<String> requiredFields = new ArrayList<>();
 
-    private String comparsionValue;
+    private String comparisonValue;
 
     private String fieldToCompare;
 
     @Override
     public Boolean isVisible(Map<String, String> requiredData) throws Exception {
-        int  greaterThan =  Integer.valueOf(comparsionValue);
+        int  greaterThan =  Integer.valueOf(comparisonValue);
         int savedValue =  Integer.valueOf(requiredData.get(fieldToCompare));
         return savedValue > greaterThan;
     }
@@ -33,8 +33,8 @@ public class GreaterThanInt implements Visibilty, DynamicVisibility {
     }
 
     @Override
-    public void setComparsionValue(String comparsionValue) {
-        this.comparsionValue = comparsionValue;
+    public void setComparisonValue(String comparisonValue) {
+        this.comparisonValue = comparisonValue;
     }
 
     @Override

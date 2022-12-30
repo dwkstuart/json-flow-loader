@@ -59,10 +59,10 @@ public class FlowBuilder {
 
     private void addDynamicFields(PageDefintion pageDefintion, Visibilty visibilty){
 
-        if(pageDefintion.getComparsionValue() != null && pageDefintion.getFieldToCompare() != null){
+        if(pageDefintion.getComparisonValue() != null && pageDefintion.getFieldToCompare() != null){
             DynamicVisibility dynamicVisibility = (DynamicVisibility) visibilty;
             dynamicVisibility.setFieldToCompare(pageDefintion.getFieldToCompare());
-            dynamicVisibility.setComparsionValue(pageDefintion.getComparsionValue());
+            dynamicVisibility.setComparisonValue(pageDefintion.getComparisonValue());
             visibilty = (Visibilty) dynamicVisibility;
         }
 
