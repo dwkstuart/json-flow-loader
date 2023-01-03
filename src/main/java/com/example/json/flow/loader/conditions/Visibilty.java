@@ -5,7 +5,7 @@ import java.util.Map;
 
 public interface Visibilty {
 
-    Boolean isVisible(Map<String, String> requiredData) throws Exception;
+    Boolean isVisible(Map<String, String> requiredData);
 
     List<String> getDataFieldNames();
 

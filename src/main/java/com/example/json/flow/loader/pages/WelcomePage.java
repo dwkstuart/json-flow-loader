@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 public class WelcomePage implements Page {
 
-    private String pageId = "Welcome";
-    private String pageTitle = "Welcome Page";
+    private final String pageId = "Welcome";
+    private final String pageTitle = "Welcome Page";
 
 }

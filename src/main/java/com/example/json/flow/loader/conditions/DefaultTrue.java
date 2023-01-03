@@ -12,7 +12,7 @@ public class DefaultTrue implements Visibilty {
     private List<String> requiredFields = new ArrayList<>();
 
     @Override
-    public Boolean isVisible(Map<String, String> requiredData) throws Exception {
+    public Boolean isVisible(Map<String, String> requiredData) {
         return Boolean.TRUE;
     }
 

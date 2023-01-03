@@ -38,7 +38,7 @@ class FlowBuilderTest {
     }
 
     @Test
-    void getPageFlow() throws Exception {
+    void getPageFlow() {
         Assert.notNull(test.buildPageFlow(jsonInput), "Flow is not null");
     }
 

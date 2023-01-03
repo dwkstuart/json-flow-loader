@@ -14,8 +14,8 @@ public class Over25 implements Visibilty {
     private List<String> requiredFields = new ArrayList<>();
 
     @Override
-    public Boolean isVisible(Map<String, String> requiredData) throws Exception {
-        int age = Integer.valueOf(requiredData.get("age"));
+    public Boolean isVisible(Map<String, String> requiredData) {
+        int age = Integer.parseInt(requiredData.get("age"));
         return age > 25;
     }
 

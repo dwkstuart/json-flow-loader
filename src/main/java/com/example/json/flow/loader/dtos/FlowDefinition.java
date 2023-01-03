@@ -2,6 +2,7 @@ package com.example.json.flow.loader.dtos;
 
 import lombok.Data;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
 public class FlowDefinition implements Serializable {
 
 
+    @Serial
     private final static long serialVersionUID = -568420353426711513L;
     private String id;
     private String name;

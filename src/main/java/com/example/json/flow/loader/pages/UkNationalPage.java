@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 public class UkNationalPage implements Page {
 
-    private String pageId = "Uk National";
-    private String pageTitle = "Are you a UK national";
+    private final String pageId = "Uk National";
+    private final String pageTitle = "Are you a UK national";
 
 }

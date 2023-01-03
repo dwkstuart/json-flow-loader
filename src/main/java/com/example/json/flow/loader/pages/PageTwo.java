@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 public class PageTwo implements Page {
 
-    private String pageId = "Page2";
-    private String pageTitle = "Page2";
+    private final String pageId = "Page2";
+    private final String pageTitle = "Page2";
 
 }

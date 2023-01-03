@@ -1,6 +1,8 @@
 package com.example.json.flow.loader;
 
 import com.example.json.flow.loader.conditions.Visibilty;
+import com.example.json.flow.loader.pages.ErrorPage;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,13 +16,14 @@ class BeanServiceTest {
     BeanService beanService;
 
     @Test
-    void getBean() {
-        beanService.getBean("ErrorPage");
+    void getErrorPageBean() {
+        Object bean = beanService.getBean("ErrorPage");
+        Assertions.assertTrue(bean instanceof ErrorPage);
     }
 
     @Test
-    void getAllVisiblityBeans() {
+    void getAllVisibilityBeans() {
         Map beans = beanService.getBeansByClass(Visibilty.class);
-        System.out.println(beans);
+        Assertions.assertEquals(4, beans.size(), "Four possibly condition beans");
     }
 }

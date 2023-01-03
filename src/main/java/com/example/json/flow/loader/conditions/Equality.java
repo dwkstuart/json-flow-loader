@@ -16,7 +16,7 @@ public class Equality implements Visibilty, DynamicVisibility {
     private String fieldToCompare;
 
     @Override
-    public Boolean isVisible(Map<String, String> requiredData) throws Exception {
+    public Boolean isVisible(Map<String, String> requiredData) {
         return comparisonValue.equals(requiredData.get(fieldToCompare));
     }
 

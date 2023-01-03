@@ -1,28 +1,27 @@
 package com.example.json.flow.loader.builder;
 
 import com.example.json.flow.loader.BeanService;
-import com.example.json.flow.loader.conditions.DefaultTrue;
 import com.example.json.flow.loader.conditions.DynamicVisibility;
-import com.example.json.flow.loader.conditions.Equality;
+import com.example.json.flow.loader.conditions.Visibilty;
 import com.example.json.flow.loader.dtos.FlowDefinition;
 import com.example.json.flow.loader.dtos.PageDefintion;
 import com.example.json.flow.loader.model.Page;
 import com.example.json.flow.loader.model.PageFlow;
 import com.example.json.flow.loader.model.PageWrapper;
-import com.example.json.flow.loader.conditions.Visibilty;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
+@Component
 public class FlowBuilder {
 
 
     @Autowired
-    private BeanService beanService;
+    private final BeanService beanService;
 
     public FlowBuilder(BeanService beanService) {
         this.beanService = beanService;
@@ -44,8 +43,8 @@ public class FlowBuilder {
         for (PageDefintion pageDefintion : flowDefinition.getPages()) {
             PageWrapper pageWrapper = new PageWrapper();
             pageWrapper.setPage(getPageFromString(pageDefintion.getPageTitle()));
-            Visibilty visibilty = getVisibityFromString(pageDefintion.getVisibilityName());
-            if(pageDefintion.getRequiredFieldNames() != null){
+            Visibilty visibilty = getVisibilityFromString(pageDefintion.getVisibilityName());
+            if (pageDefintion.getRequiredFieldNames() != null) {
                 visibilty.setRequiredFieldNames(pageDefintion.getRequiredFieldNames());
             }
             addDynamicFields(pageDefintion, visibilty);
@@ -57,9 +56,9 @@ public class FlowBuilder {
         return pageWrapperList;
     }
 
-    private void addDynamicFields(PageDefintion pageDefintion, Visibilty visibilty){
+    private void addDynamicFields(PageDefintion pageDefintion, Visibilty visibilty) {
 
-        if(pageDefintion.getComparisonValue() != null && pageDefintion.getFieldToCompare() != null){
+        if (pageDefintion.getComparisonValue() != null && pageDefintion.getFieldToCompare() != null) {
             DynamicVisibility dynamicVisibility = (DynamicVisibility) visibilty;
             dynamicVisibility.setFieldToCompare(pageDefintion.getFieldToCompare());
             dynamicVisibility.setComparisonValue(pageDefintion.getComparisonValue());
@@ -68,7 +67,7 @@ public class FlowBuilder {
 
     }
 
-    private Visibilty getVisibityFromString(String visibilityName) {
+    private Visibilty getVisibilityFromString(String visibilityName) {
         return (Visibilty) beanService.getBean(visibilityName);
     }
 

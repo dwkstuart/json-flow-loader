@@ -3,11 +3,13 @@ package com.example.json.flow.loader.dtos;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
 public class PageDefintion implements Serializable {
 
+    @Serial
     private final static long serialVersionUID = 6353102606032553665L;
     @SerializedName("pageTitle")
     @Expose
@@ -18,6 +20,15 @@ public class PageDefintion implements Serializable {
     @SerializedName("visibilityName")
     @Expose
     private String visibilityName;
+    @SerializedName("comparisonValue")
+    @Expose
+    private String comparisonValue;
+    @SerializedName("fieldToCompare")
+    @Expose
+    private String fieldToCompare;
+    @SerializedName("requiredFieldNames")
+    @Expose
+    private List<String> requiredFieldNames;
 
     public String getComparisonValue() {
         return comparisonValue;
@@ -42,16 +53,6 @@ public class PageDefintion implements Serializable {
     public void setRequiredFieldNames(List<String> requiredFieldNames) {
         this.requiredFieldNames = requiredFieldNames;
     }
-
-    @SerializedName("comparisonValue")
-    @Expose
-    private String comparisonValue;
-    @SerializedName("fieldToCompare")
-    @Expose
-    private String fieldToCompare;
-    @SerializedName("requiredFieldNames")
-    @Expose
-    private List<String> requiredFieldNames;
 
     public String getPageTitle() {
         return pageTitle;

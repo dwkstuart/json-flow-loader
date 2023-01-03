@@ -14,7 +14,7 @@ public class Controller {
     public String getProduct(@PathVariable(value = "productName")
                              String productName) {
         Product product = ProductCatalogue.getProduct(productName);
-        return product.getProductName() + ": " + product.toString();
+        return product.getProductName() + ": " + product;
     }
 
     @GetMapping(value = "/productList")

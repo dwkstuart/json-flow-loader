@@ -15,9 +15,8 @@ public class FileLoader {
                 filename).getInputStream();
         try (BufferedReader reader = new BufferedReader(
                 new InputStreamReader(resource))) {
-            String employees = reader.lines()
+            return reader.lines()
                     .collect(Collectors.joining("\n"));
-            return employees;
         }
     }
 }

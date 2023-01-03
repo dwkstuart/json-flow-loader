@@ -6,6 +6,6 @@ import org.springframework.stereotype.Component;
 @Component(value = "ErrorPage")
 public class ErrorPage implements Page {
 
-    private String pageId = "Error";
-    private String pageTitle = "Error Page";
+    private final String pageId = "Error";
+    private final String pageTitle = "Error Page";
 }
